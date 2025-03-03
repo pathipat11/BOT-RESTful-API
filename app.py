@@ -7,8 +7,6 @@ app = Flask(__name__)
 # โหลดโมเดลที่บันทึกไว้
 model = joblib.load('./model/Ensemble_Model.pkl')
 
-# โหลดข้อมูลจาก CSV
-employee_data = pd.read_csv('./data/data.csv')
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -34,7 +32,6 @@ def predict():
         result = 'Still Employed' if prediction == 1 else 'Resigned'
         return jsonify({
             "prediction": result,
-            "employee_data": employee_data.to_dict(orient='records'),
             "age": age,
             "length_of_service": length_of_service,
             "salary": salary,

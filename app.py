@@ -7,7 +7,12 @@ app = Flask(__name__)
 # โหลดโมเดลที่บันทึกไว้
 model = joblib.load('./model/Ensemble_Model.pkl')
 
+# Route หลัก (Home Route)
+@app.route('/')
+def home():
+    return jsonify({"message": "Welcome to the Employee Status Prediction API!"})
 
+# Route สำหรับการทำนายผล
 @app.route('/predict', methods=['POST'])
 def predict():
     try:

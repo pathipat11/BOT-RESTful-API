@@ -34,7 +34,7 @@ def predict():
         prediction = model.predict(input_data)[0]
 
         # ส่งผลลัพธ์เป็น JSON
-        result = 'ยังคงทำงานอยู่' if prediction == 1 else 'ลาออก'
+        result = 'Still Employee (ยังคงทำงานอยู่)' if prediction == 1 else 'Resigned (ลาออก)'
         return jsonify({
             "prediction": result,
             "age": age,
